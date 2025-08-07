@@ -1,0 +1,32 @@
+const express = require('express');
+const app = express();
+const serverless = require('serverless-http');
+const connectDB = require('../../connections/db');
+// const url = require('../../Module').url;
+// const Get_Req = require('../../Requests/Get_Req');
+// const nanoId = require('nano-id');
+const cors = require('cors')
+const appRoutes = require('../../src/routes/index');
+
+
+app.use(cors(
+    {
+        origin: '*',
+        methods: ['GET', 'POST', 'PUT', 'DELETE'],
+        allowedHeaders: ['Content-Type', 'Authorization'],
+        credentials: true,
+    }
+))
+connectDB()
+
+// // Initialize GET request routes from your module
+// Get_Req(app, url);
+
+// Use middleware to parse JSON
+app.use(express.json());
+app.get('/', (req, res) => {
+    res.send('Hello World!')
+})
+app.use('/api/v1',appRoutes)
+
+module.exports.handler = serverless(app, { callbackWaitsForEmptyEventLoop: false });
