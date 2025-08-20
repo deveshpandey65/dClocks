@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: process.env.NEXT_PUBLIC_API_BASE_URL || 'https://funny-axolotl-267edb.netlify.app/api/v1',
+    baseURL: `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1` || 'https://funny-axolotl-267edb.netlify.app/api/v1',
 });
 
 api.interceptors.request.use((config) => {

@@ -6,6 +6,7 @@ const connectDB = require('../../connections/db');
 // const Get_Req = require('../../Requests/Get_Req');
 // const nanoId = require('nano-id');
 const cors = require('cors')
+const path = require('path');
 const appRoutes = require('../../src/routes/index');
 
 
@@ -17,6 +18,7 @@ app.use(cors(
         credentials: true,
     }
 ))
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 connectDB()
 
 // // Initialize GET request routes from your module

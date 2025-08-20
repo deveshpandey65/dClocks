@@ -19,11 +19,9 @@ export default function RedirectToDashboard() {
             const decoded = jwtDecode(token);
             const role = decoded.role;
 
-            if (role === 'employee') {
-                router.push('/employee/dashboard');
-            } else if (role === 'manager') {
-                router.push('/manager/dashboard');
-            } else {
+            if (role) {
+                router.push('/jobs', { role: role });
+            }else {
                 router.push('/login'); // fallback for unknown roles
             }
         } catch (err) {

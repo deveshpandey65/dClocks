@@ -1,13 +1,14 @@
-functionsDirectory = "C:\\Users\\dpdev\\OneDrive\\Desktop\\Lief\\backend\\netlify\\functions"
+functionsDirectory = "C:\\Users\\dpdev\\OneDrive\\Desktop\\Chennie\\dClocks\\backend\\netlify\\functions"
 functionsDirectoryOrigin = "config-v1"
 redirectsOrigin = "config"
 plugins = []
 headers = []
 
 [build]
-publish = "C:\\Users\\dpdev\\OneDrive\\Desktop\\Lief\\backend"
+publish = "C:\\Users\\dpdev\\OneDrive\\Desktop\\Chennie\\dClocks\\backend"
 publishOrigin = "default"
-functions = "C:\\Users\\dpdev\\OneDrive\\Desktop\\Lief\\backend\\netlify\\functions"
+base = "C:\\Users\\dpdev\\OneDrive\\Desktop\\Chennie\\dClocks\\backend"
+functions = "C:\\Users\\dpdev\\OneDrive\\Desktop\\Chennie\\dClocks\\backend\\netlify\\functions"
 
 [build.environment]
 

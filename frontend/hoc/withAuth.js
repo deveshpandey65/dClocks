@@ -1,7 +1,7 @@
 'use client';
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import jwtDecode from 'jwt-decode'; // ✅ Use default import for v3.x
+import jwtDecode from 'jwt-decode'; 
 
 export default function withAuth(Component, allowedRoles = []) {
     return function AuthWrapper(props) {
@@ -17,6 +17,8 @@ export default function withAuth(Component, allowedRoles = []) {
             try {
                 const decoded = jwtDecode(token);
                 const userRole = decoded.role;
+                console.log('Decoded user role:', decoded);
+                localStorage.setItem('user', JSON.stringify(decoded)); // Store user info in local storage
 
                 if (allowedRoles.length > 0 && !allowedRoles.includes(userRole)) {
                     router.push('/login');

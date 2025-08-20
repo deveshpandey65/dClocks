@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 const App = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [role, setRole] = useState('employee');
+    const [role, setRole] = useState('user');
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState({ type: '', text: '' });
     const router = useRouter();
@@ -20,14 +20,14 @@ const App = () => {
         const values = { email, password, role };
 
         try {
+            console.log('Logging in with values:', api);
             const res = await api.post('/auth/login', values);
             const data = res.data;
 
             setMessage({ type: 'success', text: 'Login successful!' });
             localStorage.setItem('token', data.token);
 
-            const redirectPath = role === 'manager' ? '/manager/dashboard' : '/employee/dashboard';
-            router.push(redirectPath);
+            router.push('/jobs');
         } catch (err) {
             const errorMessage = err.response?.data?.message || 'Login failed due to a network error.';
             setMessage({ type: 'error', text: errorMessage });
@@ -94,8 +94,8 @@ const App = () => {
                             value={role}
                             onChange={(e) => setRole(e.target.value)}
                         >
-                            <option value="manager">Manager</option>
-                            <option value="employee">Employee</option>
+                            <option value="admin">Admin</option>
+                            <option value="user">User</option>
                         </select>
                     </div>
 
